@@ -11,6 +11,7 @@ export interface ChromaItem {
   borderColor?: string;
   gradient?: string;
   url?: string;
+  shirtLogoTop?: string;
 }
 
 export interface ChromaGridProps {
@@ -184,6 +185,12 @@ export const ChromaGrid: React.FC<ChromaGridProps> = ({
         >
           <div className="chroma-img-wrapper">
             <img src={c.image} alt={c.title} loading="lazy" />
+            {c.shirtLogoTop && (
+              <span className="shirt-mark" style={{ '--shirt-top': c.shirtLogoTop } as React.CSSProperties} aria-hidden="true">
+                <img src="/assets/ehs-crest.png" alt="" />
+                <span>EMERALD<br />ROBOTICS</span>
+              </span>
+            )}
           </div>
           <footer className="chroma-info">
             <h3 className="name">{c.title}</h3>

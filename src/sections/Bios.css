@@ -67,6 +67,24 @@
   object-fit: cover !important; object-position: center 22%;
 }
 .bios__chroma .chroma-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+.shirt-mark {
+  position: absolute;
+  z-index: 2;
+  left: 64%; top: var(--shirt-top);
+  width: 20%;
+  transform: translate(-50%, -50%);
+  display: flex; flex-direction: column; align-items: center;
+  padding: 0;
+  pointer-events: none;
+}
+.bios__chroma .chroma-img-wrapper .shirt-mark img {
+  display: block; width: 100% !important; height: auto !important;
+  aspect-ratio: auto; object-fit: contain !important; border: 0;
+}
+.shirt-mark span {
+  color: #e3f8f3; font: 600 clamp(2px, 0.28vw, 4px)/1 var(--mono);
+  letter-spacing: 0.02em; text-align: center;
+}
 /* the shipped footer is `1fr auto`, which squeezes names onto two lines */
 .bios__chroma .chroma-info {
   grid-template-columns: 1fr !important;

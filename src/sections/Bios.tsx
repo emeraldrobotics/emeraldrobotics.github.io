@@ -39,10 +39,27 @@ const TEAM = {
   DFR: { label: 'Dark Force', tint: '#8b7bff' },
 } as const;
 
+/* The portraits have different framing. Keep each crest on the shirt rather
+   than at a fixed card position, which would put it on a face or background. */
+const SHIRT_LOGO_TOP: Record<string, string> = {
+  'alex-xu': '65%', 'arnav-gupta': '63%', 'arpit-panda': '70%',
+  'aryan-guddala': '65%', 'corey-wan': '65%', 'david-zhang': '68%',
+  'fadhil-kudbudeen': '43%', 'gautham-ramalingam': '55%',
+  'guhan-bala': '57%', 'hussam-bajwa': '55%', 'ishita-singh': '68%',
+  'nithya-ganni': '68%', 'raghav-shah': '41%',
+  'rithik-reddy-kesani': '48%', 'ryan-hoang': '79%',
+  'varshil-kaipu': '66%',
+  'viraj-jaura': '48%', 'vivek-vasishta': '50%',
+};
+
+const shirtLogoTop = (photo?: string | null) =>
+  photo ? SHIRT_LOGO_TOP[photo.split('/').pop()?.replace(/\.(webp|jpg)$/, '') ?? ''] : undefined;
+
 const toItem = (m: Member) => {
   const t = TEAM[m.team];
   return {
     image: m.photo ?? monogram(m.name),
+    shirtLogoTop: shirtLogoTop(m.photo),
     title: m.name,
     subtitle: t.label,
     /* grade and favourite are empty for the members supplied as first names
