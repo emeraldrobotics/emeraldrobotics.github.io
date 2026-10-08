@@ -38,7 +38,7 @@ export const captain = {
   groups: ["Mechanical"] as Group[],
   grade: "Senior",
   favorite: "Seeing our club build from the ground up",
-  photo: "/assets/emerald-shirts/varun.jpg",
+  photo: "/assets/emerald-shirts/varun.jpg?v=centered",
 };
 
 export const coaches = [
@@ -194,7 +194,7 @@ export const members: Member[] = [
     ],
     "grade": "Sophomore",
     "favorite": "The challenge and how it forced us to improvise solutions quickly. Last years challenge was a great learning experience for a rookie team and we are preparing to do our best this season",
-    "photo": "/assets/emerald-shirts/vivaan.jpg"
+    "photo": "/assets/emerald-shirts/vivaan.jpg?v=centered"
   },
   {
     "name": "Sidhak",
@@ -334,7 +334,7 @@ export const members: Member[] = [
     ],
     "grade": "Junior",
     "favorite": "Watching the bot successfully have a 12 ball auto",
-    "photo": "/assets/emerald-shirts/kevin.jpg"
+    "photo": "/assets/emerald-shirts/kevin.jpg?v=centered"
   },
   {
     "name": "Deep Shah",
@@ -344,7 +344,7 @@ export const members: Member[] = [
     ],
     "grade": "Junior",
     "favorite": "Learning throughout the season with my peers as well as creating nicknames for the entire team",
-    "photo": "/assets/emerald-shirts/deep.jpg"
+    "photo": "/assets/emerald-shirts/deep.jpg?v=centered"
   }
 ];
 
