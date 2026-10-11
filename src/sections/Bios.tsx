@@ -39,27 +39,36 @@ const TEAM = {
   DFR: { label: 'Dark Force', tint: '#8b7bff' },
 } as const;
 
-/* The portraits have different framing. Keep each crest on the shirt rather
-   than at a fixed card position, which would put it on a face or background. */
-const SHIRT_LOGO_TOP: Record<string, string> = {
-  'alex-xu': '65%', 'arnav-gupta': '63%', 'arpit-panda': '70%',
-  'aryan-guddala': '65%', 'corey-wan': '65%', 'david-zhang': '68%',
-  'fadhil-kudbudeen': '43%', 'gautham-ramalingam': '55%',
-  'guhan-bala': '57%', 'hussam-bajwa': '55%', 'ishita-singh': '68%',
-  'nithya-ganni': '68%', 'raghav-shah': '41%',
-  'rithik-reddy-kesani': '48%', 'ryan-hoang': '79%',
-  'varshil-kaipu': '66%',
-  'viraj-jaura': '48%', 'vivek-vasishta': '50%',
+// Coordinates are measured in each original photo, below the collar.
+const SHIRT_LOGOS: Record<string, { width: number; height: number; x: number; y: number }> = {
+  'alex-xu': { width: 1229, height: 1280, x: 50, y: 65 },
+  'arnav-gupta': { width: 1132, height: 1389, x: 50, y: 61 },
+  'arpit-panda': { width: 1122, height: 1402, x: 51, y: 76 },
+  'aryan-guddala': { width: 1086, height: 1448, x: 52, y: 76 },
+  'corey-wan': { width: 1128, height: 1394, x: 51, y: 73 },
+  'david-zhang': { width: 1128, height: 1394, x: 50, y: 72 },
+  'fadhil-kudbudeen': { width: 1086, height: 1448, x: 51, y: 55 },
+  'gautham-ramalingam': { width: 1210, height: 1300, x: 51, y: 56 },
+  'guhan-bala': { width: 1213, height: 1296, x: 51, y: 56 },
+  'hussam-bajwa': { width: 1214, height: 1295, x: 51, y: 56 },
+  'ishita-singh': { width: 1064, height: 1478, x: 50, y: 68 },
+  'nithya-ganni': { width: 1136, height: 1385, x: 50, y: 79 },
+  'raghav-shah': { width: 970, height: 1622, x: 50, y: 40 },
+  'rithik-reddy-kesani': { width: 964, height: 1632, x: 52, y: 56 },
+  'ryan-hoang': { width: 1229, height: 1280, x: 52, y: 84 },
+  'varshil-kaipu': { width: 1160, height: 1356, x: 51, y: 68 },
+  'viraj-jaura': { width: 1203, height: 1308, x: 50, y: 52 },
+  'vivek-vasishta': { width: 1207, height: 1303, x: 50, y: 54 },
 };
 
-const shirtLogoTop = (photo?: string | null) =>
-  photo ? SHIRT_LOGO_TOP[photo.split('/').pop()?.replace(/\.(webp|jpg)$/, '') ?? ''] : undefined;
+const shirtLogo = (photo?: string | null) =>
+  photo ? SHIRT_LOGOS[photo.split('/').pop()?.replace(/\.webp$/, '') ?? ''] : undefined;
 
 const toItem = (m: Member) => {
   const t = TEAM[m.team];
   return {
     image: m.photo ?? monogram(m.name),
-    shirtLogoTop: shirtLogoTop(m.photo),
+    shirtLogo: shirtLogo(m.photo),
     title: m.name,
     subtitle: t.label,
     /* grade and favourite are empty for the members supplied as first names

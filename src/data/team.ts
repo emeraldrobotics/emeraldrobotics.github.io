@@ -194,7 +194,7 @@ export const members: Member[] = [
     ],
     "grade": "Sophomore",
     "favorite": "The challenge and how it forced us to improvise solutions quickly. Last years challenge was a great learning experience for a rookie team and we are preparing to do our best this season",
-    "photo": "/assets/emerald-shirts/vivaan.jpg?v=centered"
+    "photo": "/assets/emerald-shirts/vivaan.jpg?v=black-background"
   },
   {
     "name": "Sidhak",
@@ -334,7 +334,7 @@ export const members: Member[] = [
     ],
     "grade": "Junior",
     "favorite": "Watching the bot successfully have a 12 ball auto",
-    "photo": "/assets/emerald-shirts/kevin.jpg?v=centered"
+    "photo": "/assets/emerald-shirts/kevin.jpg?v=black-background"
   },
   {
     "name": "Deep Shah",
@@ -344,7 +344,7 @@ export const members: Member[] = [
     ],
     "grade": "Junior",
     "favorite": "Learning throughout the season with my peers as well as creating nicknames for the entire team",
-    "photo": "/assets/emerald-shirts/deep.jpg?v=centered"
+    "photo": "/assets/emerald-shirts/deep.jpg?v=black-background"
   }
 ];
 

@@ -11,7 +11,7 @@ export interface ChromaItem {
   borderColor?: string;
   gradient?: string;
   url?: string;
-  shirtLogoTop?: string;
+  shirtLogo?: { width: number; height: number; x: number; y: number };
 }
 
 export interface ChromaGridProps {
@@ -26,6 +26,22 @@ export interface ChromaGridProps {
 }
 
 type SetterFn = (v: number | string) => void;
+
+function ShirtPortrait({ item }: { item: ChromaItem }) {
+  const mark = item.shirtLogo!;
+  const size = mark.width * 0.085;
+  const logoHeight = size * 504 / 464;
+  const x = mark.width * mark.x / 100;
+  const y = mark.height * mark.y / 100;
+  // Photo and print share one coordinate system, so resizing cannot separate them.
+  return (
+    <svg className="shirt-portrait" viewBox={`0 0 ${mark.width} ${mark.height}`} role="img" aria-label={item.title} preserveAspectRatio="xMidYMid meet">
+      <image href={item.image} width={mark.width} height={mark.height} />
+      <image href="/assets/ehs-crest.png" x={x - size / 2} y={y - logoHeight / 2} width={size} height={logoHeight} />
+      <text x={x} y={y + logoHeight / 2 + mark.width * 0.02} textAnchor="middle" fill="#e3f8f3" fontFamily="sans-serif" fontSize={mark.width * 0.012} fontWeight="600">EMERALD ROBOTICS</text>
+    </svg>
+  );
+}
 
 export const ChromaGrid: React.FC<ChromaGridProps> = ({
   items,
@@ -184,13 +200,7 @@ export const ChromaGrid: React.FC<ChromaGridProps> = ({
           }
         >
           <div className="chroma-img-wrapper">
-            <img src={c.image} alt={c.title} loading="lazy" />
-            {c.shirtLogoTop && (
-              <span className="shirt-mark" style={{ '--shirt-top': c.shirtLogoTop } as React.CSSProperties} aria-hidden="true">
-                <img src="/assets/ehs-crest.png" alt="" />
-                <span>EMERALD<br />ROBOTICS</span>
-              </span>
-            )}
+            {c.shirtLogo ? <ShirtPortrait item={c} /> : <img src={c.image} alt={c.title} loading="lazy" />}
           </div>
           <footer className="chroma-info">
             <h3 className="name">{c.title}</h3>
